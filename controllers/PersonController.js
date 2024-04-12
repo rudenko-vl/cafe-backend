@@ -4,7 +4,7 @@ export const create = async (req, res) => {
   try {
     const doc = new EmployesModel({
       name: req.body.name,
-      imgUrl: req.body.imgUrl || "",
+      imgUrl: req.body.imgUrl || new Date(),
       user: req.userId,
     });
     const person = await doc.save();
