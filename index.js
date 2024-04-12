@@ -48,7 +48,7 @@ app.post("/visits", checkAuth, VisitsController.create);
 app.get("/visits", checkAuth, VisitsController.getVisits);
 app.delete("/visits/:id", checkAuth, VisitsController.removeVisit);
 
-app.listen(process.env.PORT || 5000, (err) => {
+app.listen(process.env.PORT || 5001, (err) => {
   if (err) {
     return console.log(err);
   }

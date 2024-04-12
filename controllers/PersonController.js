@@ -1,10 +1,14 @@
 import EmployesModel from "../models/Employes.js";
+import { nanoid } from "nanoid";
+
+const codeLength = 5;
 
 export const create = async (req, res) => {
   try {
     const doc = new EmployesModel({
       name: req.body.name,
       imgUrl: req.body.imgUrl || new Date(),
+      code: nanoid(codeLength),
       user: req.userId,
     });
     const person = await doc.save();

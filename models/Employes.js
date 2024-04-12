@@ -10,7 +10,9 @@ const EmployesSchema = new mongoose.Schema(
     imgUrl: {
       type: String,
     },
-
+    code: {
+      type: String,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
