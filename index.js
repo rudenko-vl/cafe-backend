@@ -7,7 +7,6 @@ import {
   createPersonValidation,
 } from "./validations/validations.js";
 import checkAuth from "./utils/checkAuth.js";
-import allowCors from "./utils/allowCors .js";
 import * as UserController from "./controllers/UserController.js";
 import * as PersonController from "./controllers/PersonController.js";
 import * as VisitsController from "./controllers/VisitsController.js";
@@ -27,7 +26,7 @@ mongoose
   });
 const app = express();
 app.use(express.json());
-app.use(cors(allowCors));
+app.use(cors());
 
 app.post("/auth/register", registerValidation, UserController.register);
 app.post("/auth/login", loginValidation, UserController.login);
