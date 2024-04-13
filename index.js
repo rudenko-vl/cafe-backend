@@ -10,14 +10,15 @@ import checkAuth from "./utils/checkAuth.js";
 import * as UserController from "./controllers/UserController.js";
 import * as PersonController from "./controllers/PersonController.js";
 import * as VisitsController from "./controllers/VisitsController.js";
+import corsOption from "./utils/corsMiddlevar.js";
 
 // mongoose
 //   .connect(
 //     "mongodb+srv://investvesko:psOaRrCJ813mnSYD@cluster0.qxpgtnc.mongodb.net/cafe_visits?retryWrites=true&w=majority"
 //   )
 
-mongoose
-  .connect(process.env.MONGODB_URI)
+  mongoose
+    .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("DB is ok");
   })
@@ -26,7 +27,7 @@ mongoose
   });
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOption));
 
 app.post("/auth/register", registerValidation, UserController.register);
 app.post("/auth/login", loginValidation, UserController.login);
