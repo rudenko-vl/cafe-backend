@@ -27,8 +27,7 @@ mongoose
   });
 const app = express();
 app.use(express.json());
-app.use(cors());
-app.use(allowCors);
+app.use(cors(allowCors));
 
 app.post("/auth/register", registerValidation, UserController.register);
 app.post("/auth/login", loginValidation, UserController.login);
