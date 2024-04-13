@@ -17,8 +17,8 @@ import corsOption from "./utils/corsMiddlevar.js";
 //     "mongodb+srv://investvesko:psOaRrCJ813mnSYD@cluster0.qxpgtnc.mongodb.net/cafe_visits?retryWrites=true&w=majority"
 //   )
 
-  mongoose
-    .connect(process.env.MONGODB_URI)
+mongoose
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("DB is ok");
   })
@@ -27,7 +27,8 @@ import corsOption from "./utils/corsMiddlevar.js";
   });
 const app = express();
 app.use(express.json());
-app.use(cors(corsOption));
+app.use(corsOption);
+app.use(cors());
 
 app.post("/auth/register", registerValidation, UserController.register);
 app.post("/auth/login", loginValidation, UserController.login);
