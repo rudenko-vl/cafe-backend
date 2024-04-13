@@ -1,4 +1,4 @@
-export const allowCors = (fn) => async (req, res) => {
+ const allowCors = (fn) => async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
   // another common pattern
@@ -23,4 +23,4 @@ const handler = (req, res) => {
   res.end(d.toString());
 };
 
-// export default allowCors(handler);
+export default allowCors(handler);
