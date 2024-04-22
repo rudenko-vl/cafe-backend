@@ -16,8 +16,8 @@ import * as VisitsController from "./controllers/VisitsController.js";
 //     "mongodb+srv://investvesko:psOaRrCJ813mnSYD@cluster0.qxpgtnc.mongodb.net/cafe_visits?retryWrites=true&w=majority"
 //   )
 
-mongoose
-  .connect(process.env.MONGODB_URI)
+  mongoose
+    .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("DB is ok");
   })
@@ -32,6 +32,8 @@ app.post("/auth/register", registerValidation, UserController.register);
 app.post("/auth/login", loginValidation, UserController.login);
 app.post("/auth/logout", UserController.logOut);
 app.get("/auth/me", checkAuth, UserController.getMe);
+app.get("/auth/all", checkAuth, UserController.getAllUsers);
+app.patch("/auth/:id", checkAuth, UserController.updateUser);
 
 app.get("/employes", PersonController.getAll);
 app.get("/employes/:id", PersonController.getOne);

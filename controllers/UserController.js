@@ -96,3 +96,31 @@ export const logOut = (req, res) => {
   res.clearCookie("token");
   res.status(200).json({ message: "Logged out successfully" });
 };
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find().exec();
+    res.json(users);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Не вдалось отримати",
+    });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await UserModel.findByIdAndUpdate(userId, {
+      name: req.body.name,
+      admin: req.body.admin,
+    });
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Не вдалось змiнити",
+    });
+  }
+};
